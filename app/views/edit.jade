@@ -1,0 +1,15 @@
+//
+   Created by luhuijian on 15/5/25.
+
+extends layout
+block content
+  .container
+    .col-md-9
+      form(method="post",role="form", action="/u/blog")
+        div.form-group
+          label(for="title") 文章标题
+          input.form-control(id="title", name="blog[blogtitle]" value="#{b.blogtitle}")
+        div.form-group
+          label(for="body") 内容
+          textarea#body.form-control(rows="20" ,name="blog[blogbody]") #{b.blogbody}
+        input.btn.btn-success(type="submit" value="提交")

@@ -1,0 +1,59 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+    script(src="/jquery/dist/jquery.min.js")
+    script(src="/bootstrap/dist/js/bootstrap.min.js")
+  body
+    nav.navbar.navbar-default.navbar-static-top(role="navigation")
+      .container
+        .navbar-header
+          a.navbar-brand(href="#") 博客
+        ul.nav.navbar-nav.navbar-right
+           if(user)
+             li
+               a 欢迎您 #{user.name}
+             li
+               a(href="/logout") 注销
+           else
+             li
+               a(href="#", data-toggle="modal" data-target="#signupModal") 注册
+             li
+               a(href="#", data-toggle="modal" data-target="#signinModal") 登录
+
+
+    block content
+  #signinModal.modal.fade
+    .modal-dialog
+      .modal-content
+        form(method="post",action="/user/signin")
+          .modal-header 登录
+          .modal-body
+            .form-group
+              label(for="singninName") 用户名
+              input#signinName.form-control(type="text",name="user[name]")
+            .form-group
+              label(for="singninPassword") 密码
+              input#signinPassword.form-control(type="password",name="user[password]")
+          .modal-footer
+            button.btn.btn-default(type="button",data-dismiss="modal") 取消
+            button.btn.btn-primary(type="submit") 确认
+
+  #signupModal.modal.fade
+    .modal-dialog
+      .modal-content
+        form(method="post",action="/user/signup")
+          .modal-header 注册
+          .modal-body
+            .form-group
+              label(for="singnupName") 用户名
+              input#signupName.form-control(type="text",name="user[name]")
+            .form-group
+              label(for="singnupPassword") 密码
+              input#signupPassword.form-control(type="password",name="user[password]")
+          .modal-footer
+            button.btn.btn-default(type="button",data-dismiss="modal") 取消
+            button.btn.btn-primary(type="submit") 确认
+
+

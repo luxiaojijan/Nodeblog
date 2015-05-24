@@ -1,0 +1,14 @@
+//
+   Created by luhuijian on 15/5/22.
+extends layout
+
+block content
+  .container
+    each blog in blogs
+      .panel.panel-primary
+        .panel-heading
+          h3.panel-title #{blog.blogtitle}
+        .panel-body
+          p #{blog.blogbody}
+        .panel-footer
+          a.btn.btn-danger(href="/u/#{blog.userId}/blog/#{blog._id}/edit") 编辑

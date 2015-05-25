@@ -5,10 +5,7 @@ extends layout
 block content
   .container
     each blog in blogs
-      .panel.panel-primary
-        .panel-heading
-          h3.panel-title #{blog.blogtitle}
-        .panel-body
-          p #{blog.blogbody}
-        .panel-footer
-          a.btn.btn-danger(href="/u/#{blog.userId}/blog/#{blog._id}/edit") 编辑
+      ul.list-group
+        li.list-group-item
+          a(href="/u/#{user.name}/blog/#{blog._id}") #{blog.blogtitle}
+          a.pull-right(href="/u/#{blog.userId}/blog/#{blog._id}/edit") 编辑

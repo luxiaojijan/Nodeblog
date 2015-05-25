@@ -46,5 +46,34 @@ exports.edit =function(req,res){
       b:b
     })
   })
-}
+};
+
+exports.show= function(req,res){
+  var id = req.params.id;
+  Blog.findById(id,function(err,b){
+    if(err){
+      console.log(err);
+    }
+    res.render('show',{
+      b:b
+    })
+  })
+};
+
+exports.update =function(req,res){
+  var id = req.params.id;
+  var b = req.body.blog;
+  var name = req.params.user;
+  Blog.findById(id,function(err,blog){
+    blog.blogtitle = b.blogtitle;
+    blog.blogbody = b.blogbody;
+    blog.updated = Date.now();
+    blog.save(function(err,blog){
+      if(err){
+        console.log(err);
+      }
+      res.redirect('/u/'+name+'/blog/'+id);
+    })
+  })
+};
 

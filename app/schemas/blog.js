@@ -21,6 +21,9 @@ var blogSchema = new Schema({
     type: ObjectId,
     ref: 'User'
   },
+  tags:{
+    type: String
+  },
   created: {
     type: Date,
     required: true

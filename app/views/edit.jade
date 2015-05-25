@@ -5,7 +5,7 @@ extends layout
 block content
   .container
     .col-md-9
-      form(method="post",role="form", action="/u/blog")
+      form(method="post",role="form", action="/u/#{user.name}/blog/#{b._id}")
         div.form-group
           label(for="title") 文章标题
           input.form-control(id="title", name="blog[blogtitle]" value="#{b.blogtitle}")

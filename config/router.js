@@ -20,5 +20,7 @@ module.exports = function(app){
   app.post('/user/signup',User.signup);
   app.post('/u/:user/blog',Blog.create);
   app.get('/u/:user/blog',Blog.list);
+  app.get('/u/:user/blog/:id', Blog.show);
+  app.post('/u/:user/blog/:id', Blog.update);
   app.get('/u/:user/blog/:id/edit',Blog.edit);
 };

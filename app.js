@@ -37,6 +37,7 @@ app.use(session({
   })
 }));
 
+app.use(favicon(__dirname + '/public/favicon.ico'));
 require('./config/router')(app);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

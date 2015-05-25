@@ -2,7 +2,7 @@ extends layout
 block content
   .container
     .col-md-9
-      form(method="post",role="form", action="/u/#{user.name}/blog")
+      form#blog_form_post(method="post",role="form", action="/u/#{user.name}/blog")
         div.form-group
           label(for="title") 文章标题
           input.form-control(id="title", name="blog[blogtitle]")
@@ -10,3 +10,12 @@ block content
           label(for="body") 内容
           textarea#body.form-control(rows="20" ,name="blog[blogbody]")
         input.btn.btn-success(type="submit" value="提交")
+    .col-md-3
+      label(for="tags") 标签
+      .form-inline
+        .form-group
+          input#tags.form-control(type="text" style="margin-right:5px")
+        button#add_tags.btn.btn-primary 添加
+        #tags_box
+
+

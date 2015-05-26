@@ -22,7 +22,7 @@ var blogSchema = new Schema({
     ref: 'User'
   },
   tags:{
-    type: String
+    type: [String]
   },
   created: {
     type: Date,

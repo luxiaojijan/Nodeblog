@@ -1,8 +1,15 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+#tags_box{
+  margin-top: 20px;
 }
 
-a {
-  color: #00B7FF;
+#tags_box span{
+  margin-right: 10px;
+}
+
+.tag{
+  margin-left: 200px;
+}
+.tag span{
+  margin-left: 10px;
 }

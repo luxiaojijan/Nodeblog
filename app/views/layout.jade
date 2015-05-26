@@ -3,6 +3,7 @@ html
   head
     title= title
     link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="/jquery/dist/jquery.min.js")
     script(src="/javascripts/tags_new.js")
     script(src="/bootstrap/dist/js/bootstrap.min.js")
@@ -10,7 +11,14 @@ html
     nav.navbar.navbar-default.navbar-static-top(role="navigation")
       .container
         .navbar-header
-          a.navbar-brand(href="#") 博客
+          a.navbar-brand(href="/") 博客
+        ul.nav.navbar-nav
+          if(user)
+           li
+             a(href="/blog/new") 写文章
+           li
+             a(href="/u/#{user.name}/blog") 文章列表
+
         ul.nav.navbar-nav.navbar-right
            if(user)
              li

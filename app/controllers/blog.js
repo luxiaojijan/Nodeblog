@@ -7,11 +7,19 @@ exports.new = function(req,res){
   });
 }
 
+exports.index = function(req,res){
+  Blog.find({},function(err,blogs){
+    res.render('index',{
+      blogs:blogs
+    })
+  })
+}
+
 exports.create = function(req,res){
   var blog = new Blog(req.body.blog),
     username = req.params.user;
   blog.updated =blog.created = Date.now();
-
+  console.log(blog.tags);
   User.findOne({name: username},function(err,user){
     blog.userId = user._id;
     blog.save(function(err,blog){
@@ -67,6 +75,7 @@ exports.update =function(req,res){
   Blog.findById(id,function(err,blog){
     blog.blogtitle = b.blogtitle;
     blog.blogbody = b.blogbody;
+    blog.tags.push(b.tags);
     blog.updated = Date.now();
     blog.save(function(err,blog){
       if(err){

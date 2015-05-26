@@ -12,8 +12,8 @@ module.exports = function(app){
     app.locals.user= _user;
     app.locals.msgs = req.flash();
     return next();
-  })
-
+  });
+  app.get('/',Blog.index);
   app.get('/blog/new',Blog.new);
   app.get('/logout',User.logout);
   app.post('/user/signin',User.signin);

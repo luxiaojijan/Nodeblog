@@ -6,6 +6,9 @@ block content
   .container
     each blog in blogs
       ul.list-group
-        li.list-group-item
-          a(href="/u/#{user.name}/blog/#{blog._id}") #{blog.blogtitle}
+        li.list-group-item.clearfix
+          a.pull-left(href="/u/#{user.name}/blog/#{blog._id}") #{blog.blogtitle}
+          div.tag.pull-left
+            each tag in blog.tags
+              span.label.label-success #{tag}
           a.pull-right(href="/u/#{blog.userId}/blog/#{blog._id}/edit") 编辑

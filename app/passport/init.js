@@ -3,6 +3,7 @@
  */
 var signin = require('./signin');
 var signup = require('./signup');
+var github = require('./github');
 var User = require('../models/user');
 
 module.exports = function(passport){
@@ -23,5 +24,5 @@ module.exports = function(passport){
   // Setting up Passport Strategies for Login and SignUp/Registration
   signin(passport);
   signup(passport);
-
+  github(passport);
 }

@@ -12,6 +12,11 @@ var UserSchema = new mongoose.Schema({
     default:0
   },
   password: String,
+  github:{
+    id:       String,
+    email:    String,
+    name:     String
+  },
   meta:{
     creatAt:{
       type:Date,
@@ -62,7 +67,36 @@ UserSchema.statics ={
     return this
       .findOne({_id: id})
       .exec(cb)
+  },
+  findOrCreateOAuthUser:function(profile,done){
+    var User = this;
+    var query = {};
+    query[profile.authOrigin+'.id'] = profile.id;
+    User.findOne(query,function(err,user){
+      if(err) throw err;
+      if(user){
+        done(null,user)
+      }else{
+        user ={
+          name:profile.username,
+          password:'pass'
+        }
+        user[profile.authOrigin] = {};
+        user[profile.authOrigin].id = profile.id;
+        user[profile.authOrigin].email = profile.emails[0].value;
+        user[profile.authOrigin].name = profile.displayName;
+
+        User.create(
+          user,
+          function(err, user){
+            if(err) throw err;
+            done(null, user);
+          }
+        );
+      }
+    })
   }
+
 };
  module.exports = UserSchema;
 

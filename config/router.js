@@ -19,7 +19,7 @@ module.exports = function(passport){
   // handle signin post
   router.post('/user/signin',passport.authenticate('signin',{
     successRedirect:'/blog/new',
-    failureRedirect: '/',
+    failureRedirect: '/'
   }));
 
   // handle signup post
@@ -29,28 +29,15 @@ module.exports = function(passport){
     failureFlash:true
   }));
 
-  router.post('/uploadImg', function(req, res, next) {
-    var form = new formidable.IncomingForm();
-    form.keepExtensions = true;
-    form.uploadDir = __dirname + '../public/upload';
+  // handle github get
+  router.get("/auth/github", passport.authenticate("github",{ scope : "email"}));
 
-    form.parse(req, function (err, fields, files) {
-      if (err) {
-        throw err;
-      }
-
-      var image = files.imgFile;
-      var path = image.path;
-      path = path.replace('/\\/g', '/');
-      var url = '/upload' + path.substr(path.lastIndexOf('/'), path.length);
-
-      var info = {
-        "error": 0,
-        "url": url
-      };
-      res.send(info);
-    });
-  });
+  router.get("/auth/github/callback",
+    passport.authenticate("github",{ failureRedirect: '/'}),
+    function(req,res){
+      res.render("new", {user : req.user});
+    }
+  );
 
   router.post('/u/:user/blog',Blog.create);
   router.get('/u/:user/blog',Blog.list);

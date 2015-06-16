@@ -70,7 +70,7 @@ app.use('/',routes);
 
 var ueditor = require('ueditor-nodejs');
 app.use('/ueditor/ue', ueditor({//这里的/ueditor/ue是因为文件件重命名为了ueditor,如果没改名，那么应该是/ueditor版本号/ue
-  configFile: '/ueditor/nodejs/config.json',//如果下载的是jsp的，就填写/ueditor/jsp/config.json
+  configFile: '/ueditor/nodejs/config.json',
   mode: 'bcs', //本地存储填写local
   accessKey: 'Adxxxxxxx',//本地存储不填写，bcs填写
   secrectKey: 'oiUqt1VpH3fdxxxx',//本地存储不填写，bcs填写

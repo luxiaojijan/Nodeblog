@@ -3,6 +3,7 @@
  */
 var User = require('../models/user');
 
+
 exports.signup = function(req,res){
   var _user = req.body.user;
   console.log(_user);

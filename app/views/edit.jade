@@ -11,7 +11,7 @@ block content
           input.form-control(id="title", name="blog[blogtitle]" value="#{b.blogtitle}")
         div.form-group
           label(for="body") 内容
-          textarea#body.form-control(rows="20" ,name="blog[blogbody]") #{b.blogbody}
+          script#editor(name="blog[blogbody]" type="text/plain")  !{b.blogbody}
         input.btn.btn-success(type="submit" value="提交")
     .col-md-3
       label(for="tags") 标签

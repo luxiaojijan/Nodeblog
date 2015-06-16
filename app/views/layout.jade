@@ -6,7 +6,12 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="/jquery/dist/jquery.min.js")
     script(src="/javascripts/tags_new.js")
+    script(src="/javascripts/editor.js")
     script(src="/bootstrap/dist/js/bootstrap.min.js")
+    script(src="/ueditor/ueditor.config.js")
+    script(src="/ueditor/ueditor.all.min.js")
+    script(src="/ueditor/lang/zh-cn/zh-cn.js")
+
   body
     nav.navbar.navbar-default.navbar-static-top(role="navigation")
       .container
@@ -41,10 +46,10 @@ html
           .modal-body
             .form-group
               label(for="singninName") 用户名
-              input#signinName.form-control(type="text",name="user[name]")
+              input#signinName.form-control(type="text",name="username")
             .form-group
               label(for="singninPassword") 密码
-              input#signinPassword.form-control(type="password",name="user[password]")
+              input#signinPassword.form-control(type="password",name="password")
           .modal-footer
             button.btn.btn-default(type="button",data-dismiss="modal") 取消
             button.btn.btn-primary(type="submit") 确认
@@ -57,10 +62,10 @@ html
           .modal-body
             .form-group
               label(for="singnupName") 用户名
-              input#signupName.form-control(type="text",name="user[name]")
+              input#signupName.form-control(type="text",name="username")
             .form-group
               label(for="singnupPassword") 密码
-              input#signupPassword.form-control(type="password",name="user[password]")
+              input#signupPassword.form-control(type="password",name="password")
           .modal-footer
             button.btn.btn-default(type="button",data-dismiss="modal") 取消
             button.btn.btn-primary(type="submit") 确认

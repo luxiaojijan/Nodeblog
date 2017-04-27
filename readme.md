@@ -1,4 +1,6 @@
 ## node.js实现多人博客  
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/luxiaojian/Nodeblog.svg)](https://greenkeeper.io/)
 > 基于express@4.12 jade mongoose(Mongdodb)的个人博客程序。  
 
 ![](./public/images/screen.png)  

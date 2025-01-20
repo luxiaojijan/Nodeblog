@@ -16,7 +16,7 @@
     "express-session": "^1.11.2",
     "formidable": "^1.0.17",
     "jade": "~1.9.2",
-    "mongoose": "^4.0.3",
+    "mongoose": "^6.13.6",
     "morgan": "~1.5.1",
     "passport": "^0.2.2",
     "passport-github": "^0.1.5",
